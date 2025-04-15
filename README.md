@@ -1,41 +1,56 @@
-# 📊 Customer Churn Prediction Using Random Forest (Python)
+# 📊 Customer Churn Prediction
 
-This project focuses on predicting customer churn for a telecom company using a supervised machine learning approach. The primary goal is to identify customers at risk of leaving, allowing businesses to implement targeted retention strategies.
+This project uses machine learning techniques to predict customer churn in a telecom company. By analyzing customer attributes, we aim to classify whether a customer is likely to churn or stay, helping businesses take proactive steps in customer retention.
 
----
+## 🔍 Problem Statement
 
-## 🔍 Project Overview
+Customer churn is a major concern in the telecom industry. Predicting which customers are likely to leave allows companies to implement targeted retention strategies. This project implements both a **Random Forest Classifier** and an **Artificial Neural Network (ANN)** to build accurate churn prediction models.
 
-- **Problem:** Predict whether a customer will churn (leave the service).
-- **Dataset:** Telecom customer dataset with features like `tenure`, `Contract`, `MonthlyCharges`, and `TotalCharges`.
-- **Model Used:** Random Forest Classifier
-- **Tools:** Python, Pandas, Scikit-learn, Matplotlib, Seaborn
+## 🧠 Models Used
 
----
+- **Random Forest Classifier** (with GridSearchCV for hyperparameter tuning)
+- **Artificial Neural Network (ANN)** using TensorFlow/Keras
 
-## ⚙️ Features
+## 🧹 Data Preprocessing
 
-- Data cleaning and preprocessing
-- Exploratory Data Analysis (EDA)
-- Feature engineering and selection
-- Hyperparameter tuning using Grid Search
-- Model evaluation using:
-  - Accuracy
-  - Confusion Matrix
-  - Classification Report (Precision, Recall, F1)
-  - ROC Curve & AUC Score
-- Feature importance visualization
+- Dropped irrelevant columns (e.g., `customerID`)
+- Handled missing values (e.g., converted `TotalCharges` to numeric and dropped nulls)
+- Encoded categorical variables using `pd.get_dummies`
+- Scaled features using `StandardScaler` for ANN compatibility
+- Split data into training and testing sets (80/20)
 
----
+## 🧪 Model Evaluation
 
-## 🧠 Model Performance
+### Random Forest
+- **Accuracy**: 80%
+- **AUC Score**: 0.85
+- **Key Features**: TotalCharges, MonthlyCharges, tenure, Contract
+- **Evaluation**: Confusion matrix, classification report, ROC curve
 
-- **Accuracy:** 79.98%
-- **AUC Score:** 0.85
-- **Precision (Churn):** 67%
-- **Recall (Churn):** 51%
-- **Top Features:** `TotalCharges`, `MonthlyCharges`, `tenure`, `Contract`
+### ANN (Artificial Neural Network)
+- **Accuracy**: 78%
+- **Architecture**: 3 hidden layers (128, 64, 32 units) with dropout regularization
+- **EarlyStopping** applied to prevent overfitting
+- **Evaluation**: Confusion matrix, classification report
 
----
+## 📈 Results
+
+- Random Forest slightly outperformed ANN in accuracy and interpretability.
+- ROC Curve was plotted for Random Forest showing strong class separation (AUC = 0.85).
+- ANN showed competitive performance with deep learning techniques.
+
+## ⚙️ Technologies Used
+
+- Python
+- Pandas, NumPy
+- Scikit-learn
+- TensorFlow / Keras
+- Matplotlib, Seaborn
+
+## 📌 Future Improvements
+
+- Try additional models (XGBoost, SVM)
+- Apply SMOTE for class imbalance
+- Model deployment using Flask and AWS (in progress)
 
 
